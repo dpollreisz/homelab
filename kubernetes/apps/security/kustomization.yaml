@@ -5,5 +5,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./cilium/ks.yaml
-  - ./ingress-nginx/ks.yaml
+  # - ./authentik/ks.yaml
+  - ./cert-manager/ks.yaml
+  #- ./vaultwarden/ks.yaml
+
