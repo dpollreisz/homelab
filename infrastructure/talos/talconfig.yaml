@@ -1,0 +1,183 @@
+---
+clusterName: ${CLUSTER_NAME}
+
+# renovate: datasource=docker depName=ghcr.io/siderolabs/installer
+talosVersion: v1.6.1
+# renovate: datasource=github-releases extractVersion=^v(?<version>.*)$ depName=kubernetes/kubernetes
+kubernetesVersion: 1.29.0
+
+endpoint: "https://${CLUSTER_NAME}.${INTERNAL_DOMAIN}:6443"
+
+allowSchedulingOnMasters: true
+allowSchedulingOnControlPlane: true
+
+clusterPodNets:
+  - 172.22.0.0/16
+clusterSvcNets:
+  - 172.23.0.0/16
+
+cniConfig:
+  name: none
+
+additionalApiServerCertSans: &san
+  - ${CLUSTER_ENDPOINT_IP}
+  - ${CLUSTER_NAME}.${INTERNAL_DOMAIN}
+  - ${EXTERNAL_CLUSTER_NAME}.${EXTERNAL_DOMAIN}
+  - 127.0.0.1
+
+additionalMachineCertSans: *san
+
+nodes:
+  # Dell R420 / Xeon E5-2470 / 128GB / 250GB SSD / 3TB SATA
+  - hostname: dtmrh-u-dr420-n1.${INTERNAL_DOMAIN}
+    controlPlane: true
+    ipAddress: 10.27.0.11
+    installDisk: /dev/sdc
+    disableSearchDomain: true
+    networkInterfaces:
+      - interface: bond0
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 1024
+        vip:
+          ip: ${CLUSTER_ENDPOINT_IP}
+        bond:
+          mode: 802.3ad
+          lacpRate: fast
+          xmitHashPolicy: layer3+4
+          miimon: 100
+          updelay: 200
+          downdelay: 200
+          interfaces:
+            - eno1
+            - eno2
+            - eth0
+            - eth1
+    nodeLabels: &controlPlaneLabels
+      plan.upgrade.cattle.io/talos: ""
+      topology.kubernetes.io/region: dtmrh
+      topology.kubernetes.io/zone: dtmrh-u
+
+  # Dell R420 / Xeon E5-2470 / 144GB / 250GB SSD / 3TB SATA
+  - hostname: dtmrh-u-dr420-n2.${INTERNAL_DOMAIN}
+    controlPlane: true
+    ipAddress: 10.27.0.12
+    installDisk: /dev/sdc
+    disableSearchDomain: true
+    networkInterfaces:
+      - interface: bond0
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 1024
+        vip:
+          ip: ${CLUSTER_ENDPOINT_IP}
+        bond:
+          mode: 802.3ad
+          lacpRate: fast
+          xmitHashPolicy: layer3+4
+          miimon: 100
+          updelay: 200
+          downdelay: 200
+          interfaces:
+            - eno1
+            - eno2
+            - eth0
+            - eth1
+    nodeLabels: *controlPlaneLabels
+
+  # Dell R420 / Xeon E5-2470 / 160GB / 250GB SSD / 3TB SATA
+  - hostname: dtmrh-u-dr420-n3.${INTERNAL_DOMAIN}
+    controlPlane: true
+    ipAddress: 10.27.0.13
+    installDisk: /dev/sdc
+    disableSearchDomain: true
+    networkInterfaces:
+      - interface: bond0
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 1024
+        vip:
+          ip: ${CLUSTER_ENDPOINT_IP}
+        bond:
+          mode: 802.3ad
+          lacpRate: fast
+          xmitHashPolicy: layer3+4
+          miimon: 100
+          updelay: 200
+          downdelay: 200
+          interfaces:
+            - eno1
+            - eno2
+            - eth0
+            - eth1
+    nodeLabels: *controlPlaneLabels
+
+controlPlane:
+  schematic:
+    customization:
+      extraKernelArgs:
+        - net.ifnames=0
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/i915-ucode
+          - siderolabs/intel-ucode
+          - siderolabs/iscsi-tools
+          - siderolabs/nut-client
+  patches:
+    - |-
+      cluster:
+        proxy:
+          disabled: true
+        etcd:
+          advertisedSubnets:
+            - 10.27.0.0/24
+    - |-
+      - op: remove
+        path: /cluster/apiServer/admissionControl
+
+    - |-
+      machine:
+        features:
+          kubernetesTalosAPIAccess:
+            enabled: true
+            allowedRoles:
+              - os:admin
+            allowedKubernetesNamespaces:
+              - system
+          kubePrism:
+            enabled: true
+            port: 7445
+
+        files:
+          - op: create
+            path: /etc/cri/conf.d/20-customization.part
+            content: |
+              [plugins]
+                [plugins."io.containerd.grpc.v1.cri"]
+                  enable_unprivileged_ports = true
+                  enable_unprivileged_icmp = true
+
+        kubelet:
+          extraArgs:
+            feature-gates: GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
+            rotate-server-certificates: "true"
+          extraConfig:
+            maxPods: 250
+          nodeIP:
+            validSubnets:
+              - 10.27.0.0/24
+
+        network:
+          extraHostEntries:
+            - ip: ${CLUSTER_ENDPOINT_IP}
+              aliases:
+                - ${CLUSTER_NAME}.${INTERNAL_DOMAIN}
+
+        sysctls:
+          fs.inotify.max_user_watches: "1048576"
+          fs.inotify.max_user_instances: "8192"
+
+        time:
+          disabled: false
+          servers:
+            - ${NTP_SERVER}

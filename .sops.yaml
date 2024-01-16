@@ -1,0 +1,45 @@
+---
+creation_rules:
+  - path_regex: infrastructure/.*\.sops\.yaml
+    key_groups:
+      - age:
+          - age1ujgpmesszpu8z62w5yfg56srzfjd5v9h2n447yslv5njvqdpjuys9zgsv0
+        gcp_kms:
+          - resource_id: projects/homelab-411417/locations/global/keyRings/pollreisz-keyring/cryptoKeys/sops
+  - path_regex: kubernetes/.*/secret-.*\.sops\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
+    key_groups:
+      - age:
+          - age1ujgpmesszpu8z62w5yfg56srzfjd5v9h2n447yslv5njvqdpjuys9zgsv0
+        gcp_kms:
+        - resource_id: projects/homelab-411417/locations/global/keyRings/pollreisz-keyring/cryptoKeys/sops
+  - path_regex: kubernetes/.*\.sops\.yaml
+    key_groups:
+      - age:
+          - age1ujgpmesszpu8z62w5yfg56srzfjd5v9h2n447yslv5njvqdpjuys9zgsv0
+        gcp_kms:
+          - resource_id: projects/homelab-411417/locations/global/keyRings/pollreisz-keyring/cryptoKeys/sops
+  - path_regex: kubernetes/.*\.sops\.ini
+    key_groups:
+      - age:
+          - age1ujgpmesszpu8z62w5yfg56srzfjd5v9h2n447yslv5njvqdpjuys9zgsv0
+        gcp_kms:
+          - resource_id: projects/homelab-411417/locations/global/keyRings/pollreisz-keyring/cryptoKeys/sops
+  - path_regex: kubernetes/.*\.sops\.toml
+    key_groups:
+      - age:
+          - age1ujgpmesszpu8z62w5yfg56srzfjd5v9h2n447yslv5njvqdpjuys9zgsv0
+        gcp_kms:
+          - resource_id: projects/homelab-411417/locations/global/keyRings/pollreisz-keyring/cryptoKeys/sops
+  - path_regex: kubernetes/.*\.sops\.json
+    key_groups:
+      - age:
+          - age1ujgpmesszpu8z62w5yfg56srzfjd5v9h2n447yslv5njvqdpjuys9zgsv0
+        gcp_kms:
+          - resource_id: projects/homelab-411417/locations/global/keyRings/pollreisz-keyring/cryptoKeys/sops
+  - path_regex: kubernetes/.*\.sops\.env
+    key_groups:
+      - age:
+          - age1ujgpmesszpu8z62w5yfg56srzfjd5v9h2n447yslv5njvqdpjuys9zgsv0
+        gcp_kms:
+          - resource_id: projects/homelab-411417/locations/global/keyRings/pollreisz-keyring/cryptoKeys/sops

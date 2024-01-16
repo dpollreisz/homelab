@@ -1,0 +1,5 @@
+---
+providerRegex: |
+  ^(dtmrh-u-dr420-n[1-3])$
+
+bypassDnsResolution: true
