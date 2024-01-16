@@ -4,4 +4,3 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - ./helmrelease.yaml
-  - ./secret-tf-cloud-token.sops.yaml
