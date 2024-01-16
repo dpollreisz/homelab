@@ -7,3 +7,4 @@ resources:
   # Flux-Kustomizations
   - ./cilium/ks.yaml
   - ./ingress-nginx/ks.yaml
+  - ./smtp-relay/ks.yaml
