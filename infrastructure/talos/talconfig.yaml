@@ -32,7 +32,7 @@ nodes:
   - hostname: dtmrh-u-dr420-n1.${INTERNAL_DOMAIN}
     controlPlane: true
     ipAddress: 10.27.0.11
-    installDisk: /dev/sdc
+    installDisk: /dev/sdb
     disableSearchDomain: true
     networkInterfaces:
       - interface: bond0
@@ -49,8 +49,6 @@ nodes:
           updelay: 200
           downdelay: 200
           interfaces:
-            - eno1
-            - eno2
             - eth0
             - eth1
     nodeLabels: &controlPlaneLabels
@@ -62,7 +60,7 @@ nodes:
   - hostname: dtmrh-u-dr420-n2.${INTERNAL_DOMAIN}
     controlPlane: true
     ipAddress: 10.27.0.12
-    installDisk: /dev/sdc
+    installDisk: /dev/sdb
     disableSearchDomain: true
     networkInterfaces:
       - interface: bond0
@@ -79,8 +77,6 @@ nodes:
           updelay: 200
           downdelay: 200
           interfaces:
-            - eno1
-            - eno2
             - eth0
             - eth1
     nodeLabels: *controlPlaneLabels
@@ -89,7 +85,7 @@ nodes:
   - hostname: dtmrh-u-dr420-n3.${INTERNAL_DOMAIN}
     controlPlane: true
     ipAddress: 10.27.0.13
-    installDisk: /dev/sdc
+    installDisk: /dev/sdb
     disableSearchDomain: true
     networkInterfaces:
       - interface: bond0
@@ -106,8 +102,6 @@ nodes:
           updelay: 200
           downdelay: 200
           interfaces:
-            - eno1
-            - eno2
             - eth0
             - eth1
     nodeLabels: *controlPlaneLabels
