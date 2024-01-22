@@ -10,12 +10,15 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging-account-key
     solvers:
-    - http01:
-        ingress:
-          class: nginx
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: CF_API_TOKEN
       selector:
         dnsZones:
           - '${EXTERNAL_DOMAIN}'
+          - '${INTERNAL_DOMAIN}'
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -28,9 +31,13 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-account-key
     solvers:
-    - http01:
-        ingress:
-          class: nginx
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: CF_API_TOKEN
       selector:
         dnsZones:
           - '${EXTERNAL_DOMAIN}'
+          - '${INTERNAL_DOMAIN}'
+

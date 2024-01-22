@@ -8,3 +8,5 @@ resources:
   - ./cilium/ks.yaml
   - ./ingress-nginx/ks.yaml
   - ./smtp-relay/ks.yaml
+  - ./external-dns/ks.yaml
+  - ./dynamic-dns/ks.yaml
