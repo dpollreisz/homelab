@@ -1,8 +1,8 @@
 CLUSTER_NAME: ENC[AES256_GCM,data:hIfWrDqFDdfUzGSRUg==,iv:D+f7clBvwCOr+It+2DB5F/2DY4iaDq4oAR159xik2sM=,tag:puwVhWsd89SRtH14PZgCpQ==,type:str]
 EXTERNAL_CLUSTER_NAME: ENC[AES256_GCM,data:7K82,iv:z1ahgmN8icTjXAJ84QP7WJdD6JZiN0J9Um56yd8I2lk=,tag:bxV/ZzVlJQFnZzD2AYPuxg==,type:str]
 CLUSTER_ENDPOINT_IP: ENC[AES256_GCM,data:WX99rIVUaPFLmg==,iv:4yOPSndMyjw+VUBxhGz+t//3swS27JiDH7J3WaRmL9g=,tag:X2n00TlvWoVAi6xFsIFkmg==,type:str]
-INTERNAL_DOMAIN: ENC[AES256_GCM,data:C8bklUegdSSk5Qk8A60LtDt/qHEG,iv:n+jkH+2mdVwQXJsZkaHTXcV5cvDRWRCx4UaD4Twg7is=,tag:eOlMyF1b5PslVuYodLyz4w==,type:str]
-EXTERNAL_DOMAIN: ENC[AES256_GCM,data:TyddTJj2BHbXBUZJ,iv:dHvVzjysP/Y8XqRik1+MBRc1yKiP7XmMQ/975O/qiMM=,tag:q5WT/J2R4747GYBOJJh6yA==,type:str]
+INTERNAL_DOMAIN: ENC[AES256_GCM,data:/pJTGtrt1D/zZExwGK7hBF4LsNzVjg==,iv:k/ltf4SBVOySvxx8Vi0D2s1OThtqx1Sjn5jpe5RVv9A=,tag:CwdIF/W0NvgtpAIbFdxhGw==,type:str]
+EXTERNAL_DOMAIN: ENC[AES256_GCM,data:FU9jdC8vY1Rti9NbYA==,iv:QiCEs77gcGGPcuEt2NxBfDOu2rowOl4NTTx1z59qtiw=,tag:S0D7psbqjlzOHATPIvTqfQ==,type:str]
 DNS_SERVER: ENC[AES256_GCM,data:KZh8jC0g7l0u6A==,iv:qQGWWVK6tehVFocJ4OXRHe6DqS+izyWnFIqByRA+GoQ=,tag:scMcehX21n4n2E1V/NcKFQ==,type:str]
 NTP_SERVER: ENC[AES256_GCM,data:Nu7hzBNcsL5pKw==,iv:xjGD/dhwidE/lH2LG29YC4xaCug7LwXagFuPolRueuE=,tag:drWnsTgAent55OCwXdFAhA==,type:str]
 sops:
@@ -23,8 +23,8 @@ sops:
             cWNBZjNkSHNqbU1VZFd0Q21QSzlSZ0kK4MCCfbsJKU0y8ry0pFkDbRnxsxEJtP0l
             DDlzxtFxrrLOqZzF6naVnXQ23pS1L3OHSoVhMQEZeoarzR5/ZcHxUQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-16T18:29:40Z"
-    mac: ENC[AES256_GCM,data:L5h8TYaaGiN01HYyL2cspowEP1jyB06jk19GympTTRncEFjGlBdqGFwL9WY64HbJ3AYjPE9TBSD1YcI0Y0G+Zzz7dnMgNn7oSsFtCMM9VDVuytEZLL4wtsrpeomXFJf7NxHd3QCG8Vf73n+bbQfsTIWbriB9DCUBvsP/NdQRU28=,iv:zDH1567NMreJKqx24Wbj/1Z19zXskeDyG2/v27vmm8w=,tag:296v4Rltw3aAx4w+YRQpPg==,type:str]
+    lastmodified: "2024-01-22T22:43:19Z"
+    mac: ENC[AES256_GCM,data:g+k1UqUIpgFtJEza7IwfViNIbcDZqkl989f6ZvA3lxr02jLWiFD6uUOu2pPmE7y5WyK/0kFCInsoPz73sPnyqXdXPeGbwwzrCnfAFti87BzKHoKjRL9NjbV3rh8ynlsQ4LQd03eX4z/ZlwvoW3xfcdDUJlIXyJO9Z36nk8vjLBg=,iv:/NttQakXTmRi40UpikQfk/PxcoRueHOB1be7dJwE4bQ=,tag:MVRzPGxc4TOcmdISWMfaMw==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.8.1

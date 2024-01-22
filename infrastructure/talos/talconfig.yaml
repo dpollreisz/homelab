@@ -43,16 +43,11 @@ nodes:
           ip: ${CLUSTER_ENDPOINT_IP}
         bond:
           mode: 802.3ad
-          lacpRate: fast
-          xmitHashPolicy: layer3+4
           miimon: 100
-          updelay: 200
-          downdelay: 200
           interfaces:
             - eth0
             - eth1
     nodeLabels: &controlPlaneLabels
-      plan.upgrade.cattle.io/talos: ""
       topology.kubernetes.io/region: dtmrh
       topology.kubernetes.io/zone: dtmrh-u
 
@@ -71,11 +66,7 @@ nodes:
           ip: ${CLUSTER_ENDPOINT_IP}
         bond:
           mode: 802.3ad
-          lacpRate: fast
-          xmitHashPolicy: layer3+4
           miimon: 100
-          updelay: 200
-          downdelay: 200
           interfaces:
             - eth0
             - eth1
@@ -96,11 +87,7 @@ nodes:
           ip: ${CLUSTER_ENDPOINT_IP}
         bond:
           mode: 802.3ad
-          lacpRate: fast
-          xmitHashPolicy: layer3+4
           miimon: 100
-          updelay: 200
-          downdelay: 200
           interfaces:
             - eth0
             - eth1
@@ -116,7 +103,7 @@ controlPlane:
           - siderolabs/i915-ucode
           - siderolabs/intel-ucode
           - siderolabs/iscsi-tools
-          - siderolabs/nut-client
+          # - siderolabs/nut-client
   patches:
     - |-
       cluster:
