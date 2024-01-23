@@ -107,7 +107,7 @@ spec:
               - name: "/dev/sda"
 
     ingress:
-      ingressClassName: "nginx"
+      ingressClassName: nginx-external
       dashboard:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
