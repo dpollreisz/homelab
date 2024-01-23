@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: system
 resources:
   - ./talos.yaml
-  # - ./kubernetes.yaml
+  - ./kubernetes.yaml
