@@ -101,12 +101,9 @@ spec:
                 pathType: Prefix
                 service:
                   port: *port
-          - host: vaultwarden.${EXTERNAL_DOMAIN}
-            paths: *paths
         tls:
           - hosts:
               - vault.${EXTERNAL_DOMAIN}
-              - vaultwarden.${EXTERNAL_DOMAIN}
             secretName: "vaultwarden-tls-external"
     podSecurityContext:
       runAsUser: 568
