@@ -9,7 +9,7 @@ resources:
 configMapGenerator:
   - name: authentik-branding
     files:
-      - ./branding/davishaus-favicon.png
-      - ./branding/davishaus-logo.svg
+      - ./branding/pollreisz-favicon.png
+      - ./branding/pollreisz-logo.svg
     options:
       disableNameSuffixHash: true
