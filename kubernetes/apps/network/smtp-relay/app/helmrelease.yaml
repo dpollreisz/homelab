@@ -25,8 +25,7 @@ spec:
 
     env:
       DEBUG: "true"
-      # SMTP_SERVER: smtp-relay.brevo.com
-      SMTP_SERVER: https://api.brevo.com/v3/emailCampaigns
+      SMTP_SERVER: smtp-relay.brevo.com
       # OVERWRITE_FROM: "${SECRET_SENDGRID_USER_SMTP_RELAY}"
       SMTP_USERNAME: api-key
       SMTP_PASSWORD: "${SECRET_BREVO_APIKEY_SMTP_RELAY}"
