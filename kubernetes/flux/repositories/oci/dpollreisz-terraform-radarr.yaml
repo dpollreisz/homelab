@@ -6,6 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: oci://ghcr.io/jefedavis/terraform/radarr
+  url: oci://ghcr.io/dpollreisz/terraform/radarr
   ref:
     tag: main
