@@ -163,8 +163,8 @@ spec:
         mountPath: /config/Backups
         readOnly: false
 
-    nodeSelector:
-      intel.feature.node.kubernetes.io/gpu: "true"
+    # nodeSelector:
+      # intel.feature.node.kubernetes.io/gpu: "true"
 
     serviceMonitor:
       monitor:
