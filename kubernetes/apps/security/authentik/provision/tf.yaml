@@ -132,11 +132,9 @@ spec:
           parent: "${ORGANIZATION}-Admins"
     - name: users
       value:
-        jefedavis:
+        pollreid:
           name: "${FULL_NAME}"
           email: "${EMAIL_ADDRESS}"
           groups:
             - "${ORGANIZATION}-Admins"
             - "Grafana-Admins"
-
-
