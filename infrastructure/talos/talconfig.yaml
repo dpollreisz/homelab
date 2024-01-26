@@ -47,9 +47,24 @@ nodes:
           interfaces:
             - eth0
             - eth1
-    nodeLabels: &controlPlaneLabels
+    schematic:
+      customization:
+        extraKernelArgs:
+          - net.ifnames=0
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/nvidia-container-toolkit
+            - siderolabs/nvidia-fabricmanager
+            - siderolabs/nvidia-open-gpu-kernel-modules
+            - siderolabs/intel-ucode
+            - siderolabs/iscsi-tools
+      
+    nodeLabels: 
       topology.kubernetes.io/region: dtmrh
       topology.kubernetes.io/zone: dtmrh-u
+      #Needed due to Labels only allowing 63 Characters
+      factory.talos.dev/schematic-prefix: f7ff639cafb8be7988f535607594b4a1
+      factory.talos.dev/schematic-suffix: 3026114075cce95cce460a1324ed8184
 
   # Dell R420 / Xeon E5-2470 / 144GB / 250GB SSD / 3TB SATA
   - hostname: dtmrh-u-dr420-n2.${INTERNAL_DOMAIN}
@@ -70,7 +85,12 @@ nodes:
           interfaces:
             - eth0
             - eth1
-    nodeLabels: *controlPlaneLabels
+    nodeLabels:
+      topology.kubernetes.io/region: dtmrh
+      topology.kubernetes.io/zone: dtmrh-u
+      #Needed due to Labels only allowing 63 Characters
+      factory.talos.dev/schematic-prefix: f7ff639cafb8be7988f535607594b4a1
+      factory.talos.dev/schematic-suffix: 3026114075cce95cce460a1324ed8184
 
   # Dell R420 / Xeon E5-2470 / 160GB / 250GB SSD / 3TB SATA
   - hostname: dtmrh-u-dr420-n3.${INTERNAL_DOMAIN}
@@ -91,7 +111,12 @@ nodes:
           interfaces:
             - eth0
             - eth1
-    nodeLabels: *controlPlaneLabels
+    nodeLabels:
+      topology.kubernetes.io/region: dtmrh
+      topology.kubernetes.io/zone: dtmrh-u
+      #Needed due to Labels only allowing 63 Characters
+      factory.talos.dev/schematic-prefix: 082ff64bad4c1e7745cf2529dced6102
+      factory.talos.dev/schematic-suffix: b4f1691df0d787c78aa00f976f5ef172
 
 controlPlane:
   schematic:
@@ -100,10 +125,8 @@ controlPlane:
         - net.ifnames=0
       systemExtensions:
         officialExtensions:
-          - siderolabs/i915-ucode
           - siderolabs/intel-ucode
           - siderolabs/iscsi-tools
-          # - siderolabs/nut-client
   patches:
     - |-
       cluster:
