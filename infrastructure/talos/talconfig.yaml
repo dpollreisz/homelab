@@ -9,7 +9,7 @@ kubernetesVersion: 1.29.0
 endpoint: "https://${CLUSTER_NAME}.${INTERNAL_DOMAIN}:6443"
 
 allowSchedulingOnMasters: true
-allowSchedulingOnControlPlane: true
+allowSchedulingOnControlPlanes: true
 
 clusterPodNets:
   - 172.22.0.0/16
@@ -58,6 +58,15 @@ nodes:
             - siderolabs/nvidia-container-toolkit
             - siderolabs/nonfree-kmod-nvidia
     patches:
+      - |-
+        - op: add
+          path: /machine/files
+          value:
+            - content: |
+                [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+                  default_runtime_name = "nvidia"
+              path: /etc/cri/conf.d/20-customization.part
+              op: append
       - |-
         - op: add
           path: /machine/kernel
