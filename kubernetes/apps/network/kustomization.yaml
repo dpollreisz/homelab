@@ -10,3 +10,5 @@ resources:
   - ./smtp-relay/ks.yaml
   - ./external-dns/ks.yaml
   - ./dynamic-dns/ks.yaml
+  # Standard Resources
+  - ./external-services
