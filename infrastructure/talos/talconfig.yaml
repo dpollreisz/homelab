@@ -102,8 +102,8 @@ nodes:
       topology.kubernetes.io/region: dtmrh
       topology.kubernetes.io/zone: dtmrh-u
       #Needed due to Labels only allowing 63 Characters
-      factory.talos.dev/schematic-prefix: 90e40e4089e3f67dc09583f5ee5b824d
-      factory.talos.dev/schematic-suffix: 00b9eadf5d05562a78a9cc5ff15bf7f1
+      factory.talos.dev/schematic-prefix: 082ff64bad4c1e7745cf2529dced6102
+      factory.talos.dev/schematic-suffix: b4f1691df0d787c78aa00f976f5ef172
 
   # Dell R420 / Xeon E5-2470 / 160GB / 250GB SSD / 3TB SATA
   - hostname: dtmrh-u-dr420-n3.${INTERNAL_DOMAIN}
@@ -128,8 +128,8 @@ nodes:
       topology.kubernetes.io/region: dtmrh
       topology.kubernetes.io/zone: dtmrh-u
       #Needed due to Labels only allowing 63 Characters
-      factory.talos.dev/schematic-prefix: 90e40e4089e3f67dc09583f5ee5b824d
-      factory.talos.dev/schematic-suffix: 00b9eadf5d05562a78a9cc5ff15bf7f1
+      factory.talos.dev/schematic-prefix: 082ff64bad4c1e7745cf2529dced6102
+      factory.talos.dev/schematic-suffix: b4f1691df0d787c78aa00f976f5ef172
 
 controlPlane:
   schematic:
