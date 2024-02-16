@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: unifi
 subsets: 
   - addresses: 
-      - ip: ${SYNOLOGY_ADDR}
+      - ip: ${UNIFI_ADDR}
     ports: 
       - name: http
         port: 443
