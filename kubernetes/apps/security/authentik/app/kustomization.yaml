@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: security
@@ -9,7 +10,7 @@ resources:
 configMapGenerator:
   - name: authentik-branding
     files:
-      - ./branding/pollreisz-favicon.png
-      - ./branding/pollreisz-logo.svg
+      - ./branding/davishaus-favicon.png
+      - ./branding/davishaus-logo.svg
     options:
       disableNameSuffixHash: true

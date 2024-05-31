@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
@@ -6,9 +7,14 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./cilium/ks.yaml
-  - ./ingress-nginx/ks.yaml
-  - ./smtp-relay/ks.yaml
-  - ./external-dns/ks.yaml
+  - ./blocky/ks.yaml
   - ./dynamic-dns/ks.yaml
-  # Standard Resources
+  - ./external-dns/ks.yaml
+  - ./ingress-nginx/ks.yaml
+  - ./pod-gateway/ks.yaml
+  - ./smtp-relay/ks.yaml
+  - ./tetragon/ks.yaml
+  - ./multus/ks.yaml
+  # # Standard Resources
   - ./external-services
+

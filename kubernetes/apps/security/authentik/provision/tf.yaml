@@ -24,6 +24,8 @@ spec:
       varsKeys:
         - PLEX_SERVER_ID
   vars:
+    - name: authentik_url
+      value: http://authentik-server.security.svc.cluster.local:80
     - name: authentik_host
       value: https://auth.${EXTERNAL_DOMAIN}
     - name: external_domain
@@ -72,9 +74,6 @@ spec:
         Radarr:
           url: https://radarr.${EXTERNAL_DOMAIN}
           group: Media
-        Rook:
-          url: https://rook.${EXTERNAL_DOMAIN}
-          group: Storage
         Sonarr:
           url: https://sonarr.${EXTERNAL_DOMAIN}
           group: Media
@@ -90,23 +89,24 @@ spec:
         Unifi:
           url: https://unifi.${EXTERNAL_DOMAIN}
           group: Network
+        VaultWarden:
+          url: https://vault.${EXTERNAL_DOMAIN}
+          group: Security
         Wizarr:
           url: https://join.${EXTERNAL_DOMAIN}
           group: Media
           skip_path_regex: |
             ^/j/
             ^/join
-            ^/setup/*
+            ^/help
             ^/static/
-        Zigbee2Mqtt:
-          url: https://zigbee2mqtt.${EXTERNAL_DOMAIN}
-          group: Media
     - name: oauth2_applications
       value:
         Grafana:
           url: https://grafana.${EXTERNAL_DOMAIN}
           group: Monitor
           client_id: grafana
+          client_type: confidential
           client_secret: ${GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}
           redirect_uris: 
             - https://grafana.${EXTERNAL_DOMAIN}/login/generic_oauth

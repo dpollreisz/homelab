@@ -3,6 +3,8 @@ autoDirectNodeRoutes: true
 
 bgpControlPlane:
   enabled: true
+  secretsNamespace:
+    name: network
 
 bandwidthManager:
   enabled: true
@@ -29,7 +31,7 @@ endpointStatus:
   enabled: true
   status: "policy"
 
-k8sServiceHost: localhost 
+k8sServiceHost: localhost
 
 k8sServicePort: 7445
 
@@ -80,5 +82,5 @@ securityContext:
       - SYS_ADMIN
       - SYS_RESOURCE
 
-tunnel: "disabled"
+routingMode: native
 
